@@ -2,8 +2,10 @@
 package main
 
 import (
+	"fmt"
 	"scaffold-demo/config"
 
+	"scaffold-demo/utils/jwtutils"
 	"scaffold-demo/utils/logs"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +17,9 @@ func main() {
 
 	logs.Error(nil, "打印info级别日志")
 	r := gin.Default()
+	//测试生成jwt token是否可用
+	ss, _ := jwtutils.GenToken("song")
+	fmt.Println("是否能生成TOKEN", ss)
 	r.Run(config.Port)
 
 }
